@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chest X-Ray Pneumonia Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px; /* Diperlebar untuk menampung gambar lebih besar */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f6fa; /* Warna background yang lebih soft */
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .upload-form {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            flex-wrap: wrap; /* Untuk responsif di layar kecil */
+        }
+        .image-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-basis: 45%; /* Lebar box sekitar 45% container */
+        }
+        .image-box h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .confidence {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .confidence p {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin: 0;
+        }
+        /* Loading spinner */
+        .loading {
+            display: none;
+            margin: 20px auto;
+        }
+        .loading:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .image-box {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chest X-Ray Pneumonia Detection</h1>
+        
+        <div class="upload-form">
+            <form method="post" enctype="multipart/form-data" id="upload-form">
+                <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                <input type="submit" value="Upload and Predict">
+            </form>
+        </div>
+
+        <div class="loading" id="loading-spinner"></div>
+
+        {% if original_image %}
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Original Image</h3>
+                <img src="{{ url_for('static', filename='uploads/' + original_image) }}" alt="Original Image">
+            </div>
+            <div class="image-box">
+                <h3>Predicted Image</h3>
+                <img src="data:image/jpeg;base64,{{ predicted_image }}" alt="Predicted Image">
+            </div>
+        </div>
+        
+        <div class="confidence">
+            {% if confidence %}
+                <p>Prediction: {{ confidence.class }} with confidence {{ confidence.confidence }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Menampilkan loading spinner saat form disubmit
+        document.getElementById('upload-form').onsubmit = function() {
+            document.getElementById('loading-spinner').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
