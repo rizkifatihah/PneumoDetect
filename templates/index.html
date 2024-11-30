@@ -5,10 +5,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 1200px; /* Diperlebar untuk menampung gambar lebih besar */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f6fa; /* Warna background yang lebih soft */
+            background-color: #f5f6fa; 
         }
         .container {
             text-align: center;
@@ -47,7 +47,7 @@
             display: flex;
             justify-content: space-around;
             margin-top: 30px;
-            flex-wrap: wrap; /* Untuk responsif di layar kecil */
+            flex-wrap: wrap;
         }
         .image-box {
             border: 1px solid #ddd;
@@ -56,7 +56,7 @@
             border-radius: 8px;
             background-color: white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            flex-basis: 45%; /* Lebar box sekitar 45% container */
+            flex-basis: 45%;
         }
         .image-box h3 {
             color: #34495e;
@@ -78,7 +78,6 @@
             color: #2c3e50;
             margin: 0;
         }
-        /* Loading spinner */
         .loading {
             display: none;
             margin: 20px auto;
@@ -97,7 +96,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Responsif untuk layar kecil */
         @media (max-width: 768px) {
             .image-box {
                 flex-basis: 100%;
@@ -139,7 +137,6 @@
     </div>
 
     <script>
-        // Menampilkan loading spinner saat form disubmit
         document.getElementById('upload-form').onsubmit = function() {
             document.getElementById('loading-spinner').style.display = 'block';
         };

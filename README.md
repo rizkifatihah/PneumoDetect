@@ -1,6 +1,6 @@
 # PneumoDetect: Chest X-Ray Pneumonia Detection System
 
-A deep learning-based web application for automated detection of pneumonia from chest X-ray images using YOLOv8 model.
+A deep learning-based web application for automated detection of pneumonia from chest X-ray images using YOLOv11 model.
 
 ## Project Overview
 
@@ -13,10 +13,10 @@ This project uses the Chest X-Ray Images (Pneumonia) dataset:
 - **Dataset Link**: [Chest X-Ray Images (Pneumonia) on Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
 Dataset characteristics:
-- 5,863 X-Ray images (JPEG)
+- 5,856 X-Ray images (JPEG)
 - 2 categories: PNEUMONIA and NORMAL
 - Dataset organization:
-  - Train: 5,216 images
+  - Train: 4,009 images
   - Test: 624 images
   - Val: 16 images
 - Images sourced from pediatric patients at Guangzhou Women and Children's Medical Center
