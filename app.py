@@ -15,7 +15,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Load YOLO model
-model = YOLO("best.pt")  # Make sure to use your trained model path
+model = YOLO("best.pt")
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -42,9 +42,9 @@ def predict_image(image_path):
     img_str = base64.b64encode(buffered.getvalue()).decode()
     
     # Get the highest confidence prediction
-    probs = result.probs  # Get probability object
-    conf_value = float(probs.top1conf)  # Get highest confidence value
-    class_name = result.names[probs.top1]  # Get class name with highest confidence
+    probs = result.probs 
+    conf_value = float(probs.top1conf)  
+    class_name = result.names[probs.top1]
     
     # Format the confidence result
     confidence = {
