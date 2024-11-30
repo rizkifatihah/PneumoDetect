@@ -28,34 +28,34 @@ Dataset characteristics:
 - Windows/Linux/MacOS
 
 ## Project Structure
-PneumoDetect/ 
+PneumoDetect/
+<br>
 ├── app.py 
+<br>
 ├── requirements.txt 
+<br>
 ├── best.pt 
+<br>
 ├── README.md 
+<br>
 └── static/ 
-    └── uploads/ 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── uploads/
+<br>
 └── templates/ 
-    └── index.html
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── index.html
 
 
 ## Installation Guide
 
 ### 1. Clone the Repository
-
 git clone <repository-url>
 cd PneumoDetect
 
 ### 2. Create Virtual Environment
-
-# Create virtual environment
 python -m venv venv
-
-# Activate virtual environment
-# For Windows
 venv\Scripts\activate
-# For Linux/MacOS
-source venv/bin/activate
 
 ### 3. Install Dependencies
 pip install -r requirements.txt
